@@ -1,20 +1,25 @@
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import Display from './../Display';
 
 
+test("Display component renders without error", () => {
+    render(<Display />)
+})
+
+test("Display show component when the data button is clicked", () => {
+    render(<Display />);
+    const button = screen.getByRole('button');
+
+    fireEvent.click(button);
 
 
-
-
-
-
-
-
-
-
+});
 
 
 
 ///Tasks:
-//1. Add in nessisary imports and values to establish the testing suite.
+//1. Add in necessary imports and values to establish the testing suite.
 //2. Test that the Display component renders without any passed in props.
 //3. Rebuild or copy a show test data element as used in the previous set of tests.
 //4. Test that when the fetch button is pressed, the show component will display. Make sure to account for the api call and change of state in building your test.
