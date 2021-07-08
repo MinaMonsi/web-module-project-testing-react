@@ -14,7 +14,7 @@ const testEpisode = {
 
 const testEpisodeWithoutImage = {
     //Add in approprate test data structure here.
-    id:1,
+    id:2,
     name: "Chapter One: The Vanishing of Will Byers",
     season: 1,
     number: 1,
@@ -24,15 +24,21 @@ const testEpisodeWithoutImage = {
 
 test("renders without error", () => {
     render(<Episode episode={testEpisode} />);
-    screen.debug();
 });
 
 test("renders the summary test passed as prop", ()=>{
-    
+    render(<Episode episode={testEpisode} />);
+    const summary = screen.getByText(/a young boy mysteriously disappears/i);
+    expect(summary).toBeVisible();
+    expect(summary).toBeInTheDocument();
+    expect(summary).toBeTruthy;
+
 });
 
 test("renders default image when image is not defined", ()=>{
-    
+    render(<Episode episode={testEpisodeWithoutImage} />);
+    const defaultImage = screen.getByAltText(/stranger_things.png/i);
+    expect(defaultImage).toBeVisible;
 })
 
 //Tasks
